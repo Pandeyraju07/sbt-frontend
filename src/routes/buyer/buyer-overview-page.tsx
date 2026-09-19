@@ -10,7 +10,7 @@ import {
 } from 'lucide-react'
 import { ROUTES } from '@/constants/routes'
 import { SbtLogo } from '@/components/sbt-logo'
-import buyerScene from '@/assets/sbt-buyer-scene.png'
+import buyerScene from '@/assets/sbt-buyer-scene.jpg'
 
 export function BuyerOverviewPage() {
   return (
@@ -215,25 +215,13 @@ export function BuyerOverviewPage() {
         </div>
 
         {/* Right Section: 3D Archway, Mobile App Showcase & Shopper Scene */}
-        <div className="lg:w-[52%] xl:w-[54%] flex flex-col justify-between items-end overflow-hidden relative">
-          <div className="w-full flex-1 flex items-center justify-center lg:justify-end overflow-hidden">
-            <img
-              src={buyerScene}
-              alt="SBT 3D Buyer Archway Scene with Mobile App Showcase and Shopper"
-              className="w-full h-auto max-h-[660px] object-contain object-right select-none pointer-events-none drop-shadow-sm"
-              loading="eager"
-            />
-          </div>
-
-          {/* Bottom Right Brand Pillar */}
-          <div className="w-full flex items-center justify-end px-8 pb-6 pt-2 select-none">
-            <div className="flex flex-col items-end">
-              <div className="w-6 h-[2.5px] bg-[#DF1927] rounded-full mb-1.5" />
-              <p className="font-bold text-[10px] sm:text-[11px] text-slate-400 tracking-[0.25em] uppercase">
-                SELL &nbsp;|&nbsp; BUY &nbsp;|&nbsp; TRUST
-              </p>
-            </div>
-          </div>
+        <div className="lg:w-[52%] xl:w-[54%] flex items-center justify-center lg:justify-end relative mt-6 lg:mt-0 overflow-hidden">
+          <img
+            src={buyerScene}
+            alt="SBT 3D Buyer Archway Scene with Mobile App Showcase and Shopper"
+            className="w-full max-w-[680px] xl:max-w-[720px] h-auto max-h-[680px] object-contain object-right select-none pointer-events-none drop-shadow-sm"
+            loading="eager"
+          />
         </div>
       </main>
     </div>
