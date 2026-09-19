@@ -9,14 +9,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { OrgStoreContextSelector } from '@/components/layout/org-store-context-selector'
 import { useUiStore } from '@/store/ui-store'
 
 type AppHeaderProps = {
   title: string
   onOpenMobileNav: () => void
+  showOrgSelector?: boolean
 }
 
-export function AppHeader({ title, onOpenMobileNav }: AppHeaderProps) {
+export function AppHeader({
+  title,
+  onOpenMobileNav,
+  showOrgSelector = true,
+}: AppHeaderProps) {
   const toggleSidebar = useUiStore((state) => state.toggleSidebar)
   const setCommandPaletteOpen = useUiStore((state) => state.setCommandPaletteOpen)
 
@@ -30,7 +36,7 @@ export function AppHeader({ title, onOpenMobileNav }: AppHeaderProps) {
         onClick={onOpenMobileNav}
         aria-label="Open navigation"
       >
-        <MenuIcon />
+        <MenuIcon className="size-4" />
       </Button>
       <Button
         type="button"
@@ -40,15 +46,23 @@ export function AppHeader({ title, onOpenMobileNav }: AppHeaderProps) {
         onClick={toggleSidebar}
         aria-label="Toggle sidebar"
       >
-        <PanelLeftIcon />
+        <PanelLeftIcon className="size-4" />
       </Button>
 
-      <p className="text-label text-muted-foreground hidden sm:block">{title}</p>
+      <span className="text-label text-muted-foreground hidden sm:inline-block font-semibold">
+        {title}
+      </span>
+
+      {showOrgSelector && (
+        <div className="hidden md:block">
+          <OrgStoreContextSelector />
+        </div>
+      )}
 
       <button
         type="button"
         onClick={() => setCommandPaletteOpen(true)}
-        className="border-input bg-background text-muted-foreground hover:bg-muted ml-auto flex h-9 max-w-md min-w-0 flex-1 items-center gap-2 rounded-lg border px-3 text-left text-sm transition-colors md:max-w-sm"
+        className="border-input bg-background text-muted-foreground hover:bg-muted ml-auto flex h-9 max-w-md min-w-0 flex-1 items-center gap-2 rounded-lg border px-3 text-left text-sm transition-colors md:max-w-xs"
         aria-label="Open command search"
       >
         <SearchIcon className="size-4 shrink-0" />
@@ -58,8 +72,15 @@ export function AppHeader({ title, onOpenMobileNav }: AppHeaderProps) {
         </kbd>
       </button>
 
-      <Button type="button" variant="ghost" size="icon" aria-label="Notifications">
-        <BellIcon />
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        aria-label="Notifications"
+        className="relative"
+      >
+        <BellIcon className="size-4" />
+        <span className="bg-primary absolute top-2 right-2 size-2 rounded-full" />
       </Button>
 
       <DropdownMenu>
@@ -71,15 +92,24 @@ export function AppHeader({ title, onOpenMobileNav }: AppHeaderProps) {
             className="rounded-full"
             aria-label="Account menu"
           >
-            <Avatar className="size-8">
-              <AvatarFallback>SBT</AvatarFallback>
+            <Avatar className="size-8 border border-border">
+              <AvatarFallback className="text-xs font-medium">SBT</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
-          <DropdownMenuLabel>Account</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            <div className="flex flex-col">
+              <span className="text-xs font-semibold">Operator Account</span>
+              <span className="text-muted-foreground text-[11px] font-normal">
+                phase1-demo@sellbuytrust.com
+              </span>
+            </div>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem disabled>Profile — Phase 2</DropdownMenuItem>
+          <DropdownMenuItem disabled>Profile & Security — Phase 2</DropdownMenuItem>
+          <DropdownMenuItem disabled>Organization Settings — Phase 2</DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuItem disabled>Sign out — Phase 2</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

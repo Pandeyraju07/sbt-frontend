@@ -8,6 +8,10 @@ export type NavItem = {
   href: string
   icon: LucideIcon
   disabled?: boolean
+  badge?: string
+  badgeVariant?: 'default' | 'secondary' | 'outline' | 'info'
+  section?: string
+  requiredPermission?: string
   children?: NavItem[]
 }
 

@@ -5,6 +5,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Toaster } from '@/components/ui/sonner'
 import { queryClient } from '@/config/query-client'
 import { ErrorBoundary } from '@/app/error-boundary'
+import { AuthProvider } from '@/features/auth/context/auth-context'
 
 type AppProvidersProps = {
   children: ReactNode
@@ -19,10 +20,12 @@ export function AppProviders({ children }: AppProvidersProps) {
       disableTransitionOnChange
     >
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider delayDuration={200}>
-          <ErrorBoundary>{children}</ErrorBoundary>
-          <Toaster position="top-right" />
-        </TooltipProvider>
+        <AuthProvider>
+          <TooltipProvider delayDuration={200}>
+            <ErrorBoundary>{children}</ErrorBoundary>
+            <Toaster position="top-right" />
+          </TooltipProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </ThemeProvider>
   )

@@ -1,90 +1,73 @@
-# SBT Frontend
+# SBT Frontend — Sell Buy Trust
 
-SBT (Sell Buy Trust) is a multi-vendor e-commerce marketplace. This repository is the **Phase 1 frontend foundation**: tooling, architecture, design system, routing shells, and API client seams.
+SBT (Sell Buy Trust) is an enterprise multi-vendor e-commerce marketplace platform. This repository is the **Phase 1 Frontend Foundation**: design tokens, typography scale, responsive application shells, reusable UI primitives, status badge system, data table foundation, API client architecture, environment validation, Docker containerization, and RBAC/Scope extension points.
 
-It does **not** implement seller, buyer, product, store, inventory, or admin business modules.
+It does **not** implement Phase 2+ business workflows (seller onboarding, store management, employee RBAC management, product catalog, inventory tracking, checkout, or real identity authentication).
 
-## Tech stack
+---
 
-- React 19 + TypeScript
-- Vite
-- Tailwind CSS v4 + shadcn/ui + Lucide
-- React Router
-- TanStack Query, Zustand, React Hook Form, Zod
-- ESLint + Prettier
+## Technology Stack
 
-## Prerequisites
+- **React 19** + **TypeScript** (Strict Mode)
+- **Vite 8**
+- **Tailwind CSS v4** + **shadcn/ui** + **Lucide React**
+- **React Router v7**
+- **TanStack Query v5**, **Zustand v5**, **React Hook Form**, **Zod**
+- **ESLint** + **Prettier**
+- **Docker** + **Docker Compose**
 
-- Windows 10/11
-- Node.js **24.19.x** (LTS)
-- npm **11.17+**
-- Git
-- VS Code recommended
+---
 
-Version pins: `.nvmrc`, `.node-version`, `package.json` `engines` / `volta`.
+## Quick Start
 
-## Installation
-
-```powershell
-cd D:\RAJU\FRONTEND\sbt-frontend
+### 1. Install Dependencies
+```bash
 npm install
 ```
 
-Copy environment values if needed:
-
-```powershell
-Copy-Item .env.example .env.local
+### 2. Environment Setup
+```bash
+cp .env.example .env.local
 ```
+*(On Windows PowerShell: `Copy-Item .env.example .env.local`)*
 
-`.env.development` is already present for local development. Vite only exposes `VITE_*` variables to the browser. **Do not put secrets in frontend env files.**
-
-## Running locally
-
-```powershell
+### 3. Run Development Server
+```bash
 npm run dev
 ```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-App: [http://localhost:5173](http://localhost:5173)
+---
 
-PowerShell, Git Bash, and the VS Code integrated terminal are all supported.
+## Scripts & Verification
 
-## Building
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Start local Vite development server |
+| `npm run typecheck` | Run TypeScript compiler in strict check mode |
+| `npm run lint` | Run ESLint across all codebase files |
+| `npm run format:check` | Check code formatting via Prettier |
+| `npm run format` | Auto-format codebase with Prettier |
+| `npm run build` | Generate production build in `dist/` |
+| `npm run preview` | Preview production build locally |
 
-```powershell
-npm run build
-npm run preview
+---
+
+## Containerized Execution (Docker)
+
+```bash
+docker compose up --build
 ```
+Access the containerized frontend on [http://localhost:3000](http://localhost:3000).
 
-## Linting and formatting
+---
 
-```powershell
-npm run lint
-npm run format
-npm run format:check
-npm run typecheck
-```
+## Foundation Architecture & Documentation
 
-## Environment configuration
-
-| Variable            | Purpose                                                 |
-| ------------------- | ------------------------------------------------------- |
-| `VITE_API_BASE_URL` | Spring Boot API origin, including `/api` prefix if used |
-| `VITE_APP_NAME`     | Product name                                            |
-| `VITE_APP_ENV`      | `development` \| `test` \| `production`                 |
-
-Authentication tokens are not environment variables. They are injected at runtime by the API client.
-
-## Project structure
-
-See [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md).
-
-## Development workflow
-
-See [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md).
-
-## Documentation
-
-- [Development setup](docs/DEVELOPMENT_SETUP.md)
-- [Frontend architecture](docs/FRONTEND_ARCHITECTURE.md)
-- [Design system](docs/DESIGN_SYSTEM.md)
-- [Roadmap](docs/ROADMAP.md)
+- [Phase 1 Foundation Report](docs/PHASE_1.md)
+- [Frontend Architecture](docs/FRONTEND_ARCHITECTURE.md)
+- [Design System & Tokens](docs/DESIGN_SYSTEM.md)
+- [Project Structure](docs/PROJECT_STRUCTURE.md)
+- [Development Workflow](docs/DEVELOPMENT_WORKFLOW.md)
+- [Development Setup](docs/DEVELOPMENT_SETUP.md)
+- [Phase Roadmap](docs/ROADMAP.md)

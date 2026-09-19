@@ -8,7 +8,10 @@ import { HomePage } from '@/routes/home-page'
 import { LoginPage } from '@/routes/auth/login-page'
 import { RegisterPage } from '@/routes/auth/register-page'
 import { NotFoundPage } from '@/routes/not-found-page'
-import { ShellPlaceholderPage } from '@/routes/shell-placeholder-page'
+import { SellerOverviewPage } from '@/routes/seller/seller-overview-page'
+import { AdminOverviewPage } from '@/routes/admin/admin-overview-page'
+import { BuyerOverviewPage } from '@/routes/buyer/buyer-overview-page'
+import { DesignSystemPage } from '@/routes/design-system/design-system-page'
 
 const router = createBrowserRouter([
   {
@@ -28,14 +31,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <ShellPlaceholderPage
-            eyebrow="Seller"
-            title="Seller workspace"
-            description="Organization, stores, employees, catalog, and inventory screens will be added in later phases."
-            crumbs={[{ label: 'Home', href: ROUTES.home }, { label: 'Seller' }]}
-          />
-        ),
+        element: <SellerOverviewPage />,
       },
     ],
   },
@@ -45,14 +41,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <ShellPlaceholderPage
-            eyebrow="Admin"
-            title="Platform administration"
-            description="Approvals, policies, RBAC, and audit tools will live in this shell starting with the admin control-plane phase."
-            crumbs={[{ label: 'Home', href: ROUTES.home }, { label: 'Admin' }]}
-          />
-        ),
+        element: <AdminOverviewPage />,
       },
     ],
   },
@@ -62,16 +51,17 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <ShellPlaceholderPage
-            eyebrow="Buyer"
-            title="Buyer marketplace"
-            description="Discovery, product pages, and purchase flows are reserved for the buyer platform phase."
-            crumbs={[{ label: 'Home', href: ROUTES.home }, { label: 'Buyer' }]}
-          />
-        ),
+        element: <BuyerOverviewPage />,
       },
     ],
+  },
+  {
+    path: ROUTES.designSystem,
+    element: <DesignSystemPage />,
+  },
+  {
+    path: ROUTES.notFound,
+    element: <NotFoundPage />,
   },
   {
     path: '*',

@@ -1,6 +1,5 @@
-import { AppShell } from '@/layouts/app-shell'
-import { buyerNavigation } from '@/config/navigation'
+import { Outlet } from 'react-router-dom'
 
 export function BuyerLayout() {
-  return <AppShell navigation={buyerNavigation} />
+  return <Outlet />
 }

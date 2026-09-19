@@ -6,6 +6,7 @@ type FileUploadProps = {
   label?: string
   description?: string
   accept?: string
+  maxSizeMB?: number
   multiple?: boolean
   disabled?: boolean
   onFilesSelected?: (files: File[]) => void
@@ -14,8 +15,9 @@ type FileUploadProps = {
 
 export function FileUpload({
   label = 'Upload files',
-  description = 'Drop files here or choose from your device.',
+  description,
   accept,
+  maxSizeMB,
   multiple = true,
   disabled,
   onFilesSelected,
@@ -23,6 +25,10 @@ export function FileUpload({
 }: FileUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const inputId = useId()
+
+  const defaultDescription = maxSizeMB
+    ? `Drop files here or choose from your device (Max ${maxSizeMB}MB).`
+    : 'Drop files here or choose from your device.'
 
   const emit = (fileList: FileList | null) => {
     if (!fileList) {
@@ -50,15 +56,17 @@ export function FileUpload({
         onDragOver={(event) => event.preventDefault()}
         onDrop={onDrop}
         className={cn(
-          'border-border bg-surface flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed px-6 py-10 text-center transition-colors',
+          'border-border bg-surface flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed px-6 py-8 text-center transition-colors',
           'hover:border-ring hover:bg-accent/40',
           'focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-3',
           disabled && 'pointer-events-none opacity-50',
         )}
       >
-        <UploadIcon className="text-muted-foreground mb-3 size-6" aria-hidden="true" />
+        <UploadIcon className="text-muted-foreground mb-2 size-5" aria-hidden="true" />
         <span className="text-label text-foreground">{label}</span>
-        <span className="text-caption text-muted-foreground mt-1">{description}</span>
+        <span className="text-caption text-muted-foreground mt-0.5">
+          {description ?? defaultDescription}
+        </span>
         <input
           ref={inputRef}
           id={inputId}

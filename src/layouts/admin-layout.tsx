@@ -1,6 +1,5 @@
-import { AppShell } from '@/layouts/app-shell'
-import { adminNavigation } from '@/config/navigation'
+import { Outlet } from 'react-router-dom'
 
 export function AdminLayout() {
-  return <AppShell navigation={adminNavigation} />
+  return <Outlet />
 }
