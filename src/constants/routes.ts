@@ -1,19 +1,55 @@
 export const ROUTES = {
   home: '/',
+  notFound: '/404',
+  product: '/product/:id',
+  productIphone: '/product/iphone-15',
+  categoryMobiles: '/mobiles',
+  cart: '/cart',
+  checkout: '/checkout',
+  orderSuccess: '/order-success',
+  // Auth Suite (Pixel-perfect matching design mockups)
   login: '/login',
   register: '/register',
-  notFound: '/404',
-  designSystem: '/design-system',
-  seller: {
-    root: '/seller',
-  },
-  admin: {
-    root: '/admin',
-  },
-  buyer: {
-    root: '/buyer',
-  },
+  forgotPassword: '/forgot-password',
+  resetPassword: '/reset-password',
+  authLogin: '/auth/login',
+  authRegister: '/auth/register',
+  authForgotPassword: '/auth/forgot-password',
+  authResetPassword: '/auth/reset-password',
+
+  // Seller Central
+  sellerDashboard: '/seller/dashboard',
+  sellerProducts: '/seller/products',
+  sellerAddProduct: '/seller/products/new',
+  sellerProductsAdd: '/seller/products/add',
+  sellerProductSuccess: '/seller/products/success',
+  sellerEditProduct: '/seller/products/edit',
+  sellerEditProductId: '/seller/products/edit/:id',
+  sellerInventory: '/seller/inventory',
+  sellerOrders: '/seller/orders',
+  sellerOrderDetail: '/seller/orders/:id',
+  sellerCreateOrder: '/seller/orders/new',
+  sellerCreateOrderAlt: '/seller/orders/create',
+  sellerOrderReview: '/seller/orders/review',
+  sellerOrderSuccess: '/seller/orders/success',
+  sellerOrderSuccessId: '/seller/orders/:id/success',
+  sellerCustomers: '/seller/customers',
+  sellerCustomerDetail: '/seller/customers/:id',
+  sellerProductDetail: '/seller/products/detail',
+  sellerProductDetailId: '/seller/products/detail/:id',
+  sellerMarketing: '/seller/marketing',
+  sellerPayments: '/seller/payments',
+
+  // Admin Portal
+  adminDashboard: '/admin/dashboard',
+  adminProducts: '/admin/products',
+  adminOrders: '/admin/orders',
+  adminSellers: '/admin/sellers',
+  adminUsers: '/admin/users',
+  adminKYC: '/admin/kyc',
+  adminDisputes: '/admin/disputes',
+  adminReports: '/admin/reports',
+  adminSettings: '/admin/settings',
 } as const
 
 export type AppRoute = typeof ROUTES
-

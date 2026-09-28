@@ -179,8 +179,8 @@ async function performRefresh(): Promise<boolean> {
 }
 
 function redirectToLogin(): void {
-  if (window.location.pathname !== ROUTES.login) {
-    window.location.assign(ROUTES.login)
+  if (window.location.pathname !== ROUTES.home) {
+    window.location.assign(ROUTES.home)
   }
 }
 

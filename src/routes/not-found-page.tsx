@@ -24,21 +24,18 @@ export function NotFoundPage() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600">
-            <Link to={ROUTES.buyer.root} className="hover:text-slate-900 transition">
-              Buy
+            <Link to={ROUTES.home} className="hover:text-slate-900 transition">
+              Home
             </Link>
-            <Link to={ROUTES.seller.root} className="hover:text-slate-900 transition">
-              Sell
+            <Link to={ROUTES.categoryMobiles} className="hover:text-slate-900 transition">
+              Mobiles
             </Link>
-            <Link to={ROUTES.buyer.root} className="hover:text-slate-900 transition">
-              Categories
+            <Link to={ROUTES.cart} className="hover:text-slate-900 transition">
+              Cart
             </Link>
-            <Link to={ROUTES.admin.root} className="hover:text-slate-900 transition">
-              For Business
+            <Link to={ROUTES.orderSuccess} className="hover:text-slate-900 transition">
+              Track Order
             </Link>
-            <a href="#help" className="hover:text-slate-900 transition">
-              Help
-            </a>
           </nav>
         </div>
 
@@ -64,19 +61,19 @@ export function NotFoundPage() {
             <div className="w-8 h-[3px] bg-[#DF1927] rounded-full" />
 
             {/* Eyebrow */}
-            <span className="text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase block">
+            <span className="text-[11px] font-medium tracking-[0.14em] text-slate-400 uppercase block">
               PAGE NOT FOUND
             </span>
 
             {/* Giant 404 Display */}
-            <div className="flex items-center text-7xl sm:text-8xl lg:text-[110px] xl:text-[124px] font-black tracking-tight leading-none py-1 select-none">
+            <div className="flex items-center text-7xl sm:text-8xl lg:text-[110px] xl:text-[124px] font-semibold tracking-[-0.04em] leading-none py-1 select-none">
               <span className="text-slate-900">4</span>
               <span className="text-[#DF1927]">0</span>
               <span className="text-slate-900">4</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-black text-slate-900 tracking-tight leading-[1.12]">
+            <h1 className="text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-medium text-slate-900 tracking-[-0.035em] leading-[1.12]">
               Looks like you’re
               <br />
               off the <span className="text-[#DF1927]">marketplace.</span>
@@ -91,15 +88,15 @@ export function NotFoundPage() {
             <div className="flex flex-wrap items-center gap-6 pt-1 pb-4">
               <Link
                 to={ROUTES.home}
-                className="h-11 px-6 rounded-xl bg-[#DF1927] hover:bg-[#C8102E] active:bg-[#B00D26] text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-[#DF1927]/20 transition cursor-pointer"
+                className="h-11 px-6 rounded-xl bg-[#DF1927] hover:bg-[#C8102E] active:bg-[#B00D26] text-white font-medium text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-[#DF1927]/20 transition cursor-pointer"
               >
                 <span>Go to Homepage</span>
                 <ArrowRight className="size-4" />
               </Link>
 
               <Link
-                to={ROUTES.buyer.root}
-                className="text-xs sm:text-sm font-bold text-slate-900 border-b-2 border-slate-900 pb-0.5 hover:text-[#DF1927] hover:border-[#DF1927] transition cursor-pointer"
+                to={ROUTES.categoryMobiles}
+                className="text-xs sm:text-sm font-medium text-slate-900 border-b border-slate-900 pb-0.5 hover:text-[#DF1927] hover:border-[#DF1927] transition cursor-pointer"
               >
                 Explore Categories
               </Link>
@@ -109,33 +106,33 @@ export function NotFoundPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t border-slate-200/70">
               {/* Shop */}
               <Link
-                to={ROUTES.buyer.root}
+                to={ROUTES.home}
                 className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition group cursor-pointer"
               >
                 <div className="size-10 rounded-full bg-[#FFF1F2] text-[#DF1927] flex items-center justify-center shrink-0 shadow-2xs">
                   <Home className="size-4.5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#DF1927] transition">
+                  <h4 className="text-[13px] font-medium text-slate-900 group-hover:text-[#DF1927] transition">
                     Shop
                   </h4>
                   <p className="text-[11px] text-slate-400">Discover great products</p>
                 </div>
               </Link>
 
-              {/* Sell */}
+              {/* Mobiles */}
               <Link
-                to={ROUTES.seller.root}
+                to={ROUTES.categoryMobiles}
                 className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition group cursor-pointer"
               >
                 <div className="size-10 rounded-full bg-[#FFF1F2] text-[#DF1927] flex items-center justify-center shrink-0 shadow-2xs">
                   <Store className="size-4.5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#DF1927] transition">
-                    Sell
+                  <h4 className="text-[13px] font-medium text-slate-900 group-hover:text-[#DF1927] transition">
+                    Mobiles
                   </h4>
-                  <p className="text-[11px] text-slate-400">Grow your business</p>
+                  <p className="text-[11px] text-slate-400">Smartphones & accessories</p>
                 </div>
               </Link>
 
@@ -148,7 +145,7 @@ export function NotFoundPage() {
                   <Users className="size-4.5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#DF1927] transition">
+                  <h4 className="text-[13px] font-medium text-slate-900 group-hover:text-[#DF1927] transition">
                     Help
                   </h4>
                   <p className="text-[11px] text-slate-400">Get support</p>
@@ -159,10 +156,10 @@ export function NotFoundPage() {
 
           {/* Bottom Left Quote */}
           <div className="pt-8 pb-4">
-            <p className="italic text-xs font-semibold text-slate-700">
+            <p className="italic text-xs font-normal text-slate-600">
               “Opportunities for everyone”
             </p>
-            <p className="text-[10px] font-bold text-slate-400 mt-0.5">— SBT</p>
+            <p className="text-[10px] font-medium text-slate-400 mt-0.5">— SBT</p>
           </div>
         </div>
 
@@ -181,7 +178,7 @@ export function NotFoundPage() {
           <div className="w-full flex items-center justify-end px-8 pb-6 pt-2 select-none">
             <div className="flex flex-col items-end">
               <div className="w-6 h-[2.5px] bg-[#DF1927] rounded-full mb-1.5" />
-              <p className="font-bold text-[10px] sm:text-[11px] text-slate-400 tracking-[0.25em] uppercase">
+              <p className="font-medium text-[10px] sm:text-[11px] text-slate-400 tracking-[0.2em] uppercase">
                 SELL &nbsp;|&nbsp; BUY &nbsp;|&nbsp; TRUST
               </p>
             </div>

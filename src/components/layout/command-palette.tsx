@@ -37,13 +37,21 @@ export function CommandPalette() {
       <CommandInput placeholder="Search destinations…" />
       <CommandList>
         <CommandEmpty>No destination found.</CommandEmpty>
-        <CommandGroup heading="Foundation">
-          <CommandItem onSelect={() => go(ROUTES.home)}>Home</CommandItem>
-          <CommandItem onSelect={() => go(ROUTES.login)}>Login</CommandItem>
-          <CommandItem onSelect={() => go(ROUTES.register)}>Register</CommandItem>
-          <CommandItem onSelect={() => go(ROUTES.seller.root)}>Seller shell</CommandItem>
-          <CommandItem onSelect={() => go(ROUTES.admin.root)}>Admin shell</CommandItem>
-          <CommandItem onSelect={() => go(ROUTES.buyer.root)}>Buyer shell</CommandItem>
+        <CommandGroup heading="Marketplace">
+          <CommandItem onSelect={() => go(ROUTES.home)}>Marketplace Home</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.categoryMobiles)}>Mobiles & Smartphones</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.productIphone)}>iPhone 15 Showcase</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.cart)}>Shopping Cart</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.checkout)}>Checkout</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.orderSuccess)}>Order Confirmation & Tracking</CommandItem>
+        </CommandGroup>
+        <CommandGroup heading="Seller Central">
+          <CommandItem onSelect={() => go(ROUTES.sellerDashboard)}>Seller Dashboard</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.sellerProducts)}>Seller Products Management</CommandItem>
+        </CommandGroup>
+        <CommandGroup heading="Admin Portal">
+          <CommandItem onSelect={() => go(ROUTES.adminDashboard)}>Admin Dashboard</CommandItem>
+          <CommandItem onSelect={() => go(ROUTES.adminProducts)}>Admin Products Management</CommandItem>
         </CommandGroup>
       </CommandList>
     </CommandDialog>

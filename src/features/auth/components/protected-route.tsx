@@ -29,7 +29,7 @@ export function ProtectedRoute({
   }
 
   if (!isAuthenticated) {
-    return <Navigate to={ROUTES.login} state={{ from: location }} replace />
+    return <Navigate to={ROUTES.home} state={{ from: location }} replace />
   }
 
   if (requiredRole && !hasRole(requiredRole)) {
