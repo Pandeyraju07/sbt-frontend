@@ -154,9 +154,9 @@ export const MarketplaceFooter: React.FC = () => {
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           {/* Logo & Country Selector */}
           <div className="flex items-center gap-6">
-            <div className="brightness-125">
-              <SbtLogo size="sm" format="horizontal" />
-            </div>
+            <Link to={ROUTES.home} className="hover:opacity-90 transition block">
+              <SbtLogo size="lg" format="full" theme="dark" />
+            </Link>
 
             <div className="flex items-center gap-2 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300">
               <Globe className="size-3.5 text-slate-400" />
