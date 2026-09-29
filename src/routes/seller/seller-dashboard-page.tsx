@@ -33,6 +33,9 @@ import {
   Clock,
   Truck,
   XCircle,
+  Sparkles,
+  ChevronUp,
+  X,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { SbtLogo } from '@/components/sbt-logo'
@@ -63,9 +66,62 @@ export type DashboardVariant =
   | 'variant4' // Mockup 4: Store Setup & 80% Onboarding Completion Gauge
   | 'variant5' // Mockup 5: Operational Dashboard with Store Settings & Support Sidebar
 
+export interface DashboardVariantOption {
+  id: DashboardVariant
+  num: string
+  label: string
+  shortLabel: string
+  tag: string
+  desc: string
+}
+
+export const DASHBOARD_VARIANTS: DashboardVariantOption[] = [
+  {
+    id: 'variant1',
+    num: '01',
+    label: 'Revenue & Order Funnel',
+    shortLabel: 'Revenue Funnel',
+    tag: 'Executive',
+    desc: 'Interactive dual-axis curves, conversion donut & top products',
+  },
+  {
+    id: 'variant2',
+    num: '02',
+    label: 'Sales Overview (Tabs)',
+    shortLabel: 'Sales & Categories',
+    tag: 'Distribution',
+    desc: 'Period tab switching & category revenue distribution',
+  },
+  {
+    id: 'variant3',
+    num: '03',
+    label: 'Sales & Live Orders',
+    shortLabel: 'Orders Velocity',
+    tag: 'Operations',
+    desc: 'Velocity order strip, compact queues & live delivery tracking',
+  },
+  {
+    id: 'variant4',
+    num: '04',
+    label: 'Store Completion (80%)',
+    shortLabel: 'Store Onboarding',
+    tag: 'Growth',
+    desc: 'Progress milestone gauge, KYC status & activation checklist',
+  },
+  {
+    id: 'variant5',
+    num: '05',
+    label: 'Full Analytics Suite',
+    shortLabel: 'Operations Hub',
+    tag: 'Enterprise',
+    desc: 'Deep financial settlement, inventory alert grid & marketing ROI',
+  },
+]
+
 export const SellerDashboardPage: React.FC = () => {
   // Current active variant matching the 5 mockups
   const [activeVariant, setActiveVariant] = useState<DashboardVariant>('variant1')
+  const [isSwitcherMinimized, setIsSwitcherMinimized] = useState(false)
 
   // Metric tab selector for Sales & Orders chart
   const [activeMetricTab, setActiveMetricTab] = useState<'sales' | 'orders' | 'profit'>('sales')
@@ -267,76 +323,6 @@ export const SellerDashboardPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#1A1A1A] font-sans flex flex-col selection:bg-red-100 selection:text-red-900">
-      {/* ===================================================================== */}
-      {/* 0. MOCKUP VARIANT SWITCHER BAR (Easily switch between all 5 designs)   */}
-      {/* ===================================================================== */}
-      <div className="bg-slate-900 text-white px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 z-50">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center size-5 rounded-full bg-[#DF1927] text-white font-bold text-[10px]">
-            5
-          </span>
-          <span className="font-semibold text-slate-200">Seller Dashboard Mockups:</span>
-          <span className="text-slate-400 hidden sm:inline">Select design view:</span>
-        </div>
-        <div className="flex items-center gap-1.5 overflow-x-auto py-0.5">
-          <button
-            type="button"
-            onClick={() => setActiveVariant('variant1')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer shrink-0 ${
-              activeVariant === 'variant1'
-                ? 'bg-[#DF1927] text-white shadow-xs'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
-            }`}
-          >
-            Mockup 1: Revenue &amp; Order Funnel
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveVariant('variant2')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer shrink-0 ${
-              activeVariant === 'variant2'
-                ? 'bg-[#DF1927] text-white shadow-xs'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
-            }`}
-          >
-            Mockup 2: Sales Overview (Tabs)
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveVariant('variant3')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer shrink-0 ${
-              activeVariant === 'variant3'
-                ? 'bg-[#DF1927] text-white shadow-xs'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
-            }`}
-          >
-            Mockup 3: Sales &amp; Orders
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveVariant('variant4')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer shrink-0 ${
-              activeVariant === 'variant4'
-                ? 'bg-[#DF1927] text-white shadow-xs'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
-            }`}
-          >
-            Mockup 4: Store Completion (80%)
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveVariant('variant5')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer shrink-0 ${
-              activeVariant === 'variant5'
-                ? 'bg-[#DF1927] text-white shadow-xs'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
-            }`}
-          >
-            Mockup 5: Full Analytics Suite
-          </button>
-        </div>
-      </div>
-
       {/* ===================================================================== */}
       {/* 1. TOP HEADER BAR                                                      */}
       {/* ===================================================================== */}
@@ -590,6 +576,60 @@ export const SellerDashboardPage: React.FC = () => {
                   <span>Add Product</span>
                 </Link>
               )}
+            </div>
+          </div>
+
+          {/* Premium Executive Design View Switcher (In-Page Segmented Bar) */}
+          <div className="bg-white rounded-2xl p-2.5 border border-slate-200/80 shadow-2xs flex flex-col xl:flex-row xl:items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 px-1.5">
+              <div className="size-8 rounded-xl bg-red-50 text-[#DF1927] flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                <Sparkles className="size-4" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+                    Executive Dashboard View
+                  </span>
+                  <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">
+                    5 Variants
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  Switch between specialized executive perspectives tailored for high-growth merchants
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 bg-slate-100/80 p-1 rounded-xl overflow-x-auto">
+              {DASHBOARD_VARIANTS.map((v) => {
+                const isActive = activeVariant === v.id
+                return (
+                  <button
+                    key={v.id}
+                    type="button"
+                    onClick={() => setActiveVariant(v.id)}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
+                      isActive
+                        ? 'bg-white text-slate-900 shadow-xs font-bold border border-slate-200/60'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                    }`}
+                  >
+                    <span
+                      className={`size-1.5 rounded-full ${
+                        isActive ? 'bg-[#DF1927]' : 'bg-slate-300'
+                      }`}
+                    />
+                    <span>{v.label}</span>
+                    <span
+                      className={`text-[9px] px-1.5 py-0.5 rounded font-medium ${
+                        isActive ? 'bg-slate-100 text-slate-600' : 'text-slate-400'
+                      }`}
+                    >
+                      {v.tag}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </div>
 
@@ -1724,6 +1764,63 @@ export const SellerDashboardPage: React.FC = () => {
             </div>
           </div>
         </main>
+      </div>
+
+      {/* Floating Glassmorphic View Controller Dock */}
+      <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+        {isSwitcherMinimized ? (
+          <button
+            type="button"
+            onClick={() => setIsSwitcherMinimized(false)}
+            className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/90 text-white backdrop-blur-xl border border-white/20 shadow-2xl hover:bg-slate-900 transition-all hover:scale-105 cursor-pointer text-xs font-medium group"
+          >
+            <div className="size-2 rounded-full bg-[#DF1927] animate-pulse" />
+            <span className="font-semibold text-slate-100">5 Dashboard Views</span>
+            <span className="text-[11px] text-slate-400 group-hover:text-slate-200 transition">
+              • Switch
+            </span>
+            <ChevronUp className="size-3.5 text-slate-400" />
+          </button>
+        ) : (
+          <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-slate-950/90 backdrop-blur-2xl border border-white/15 text-white shadow-2xl max-w-[96vw] overflow-x-auto">
+            <div className="flex items-center gap-2 pl-3 pr-2 py-1 shrink-0 border-r border-white/10">
+              <Sparkles className="size-3.5 text-[#DF1927]" />
+              <span className="text-[11px] font-bold text-slate-200 tracking-wide uppercase">
+                Layouts
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1 overflow-x-auto py-0.5">
+              {DASHBOARD_VARIANTS.map((v) => {
+                const isActive = activeVariant === v.id
+                return (
+                  <button
+                    key={v.id}
+                    type="button"
+                    onClick={() => setActiveVariant(v.id)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all shrink-0 cursor-pointer ${
+                      isActive
+                        ? 'bg-[#DF1927] text-white shadow-sm font-semibold'
+                        : 'text-slate-300 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <span>{v.shortLabel}</span>
+                  </button>
+                )
+              })}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsSwitcherMinimized(true)}
+              className="size-7 rounded-full text-slate-400 hover:text-white hover:bg-white/10 flex items-center justify-center shrink-0 ml-1 transition cursor-pointer"
+              title="Minimize view switcher"
+              aria-label="Minimize view switcher"
+            >
+              <X className="size-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
